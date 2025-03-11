@@ -5,6 +5,9 @@ const app = express()
 
 app.use(express.json())
 
+app.get("/",(req,res)=>{
+    res.status(200).send("http get endpoint")
+})
 
 app.post("/signup", async (req, res) => {
     const body = req.body

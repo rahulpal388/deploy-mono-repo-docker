@@ -1,0 +1,25 @@
+name: Deploy the backend
+on:
+  push:
+    branch: [production]
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@2
+
+      - name: Docker login
+        uses: docker/login-action@2
+        with:
+          username: ${{secret.DOCKERHUB_USERNAME}}
+          password: ${{secret.DOCKERHUB_PASSWORD}}
+
+      - name: build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./docker/Dockerfile.httpBackend
+          push: true
+          tags: rahulpal388/deploy-httpbackend:${{github.sha}}

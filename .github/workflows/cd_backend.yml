@@ -30,6 +30,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@43.204.149.125 << 'EOF'
           sudo docker pull rahulpal388/deploy-httpbackend:${{secrets.sha}}
           sudo docker ps
-          sudo docker stop http-backend 
+          sudo docker kill http-backend 
           sudo docker run --name http-backend -d -p 8080:8080 rahulpal388/deploy-httpbackend:${{secrets.sha}}
           EOF

@@ -28,7 +28,7 @@ jobs:
           echo "${{secrets.VM_PRIVATEKEY}}" &> ~/ssh_key
           chmod 700 /home/runner/ssh_key
           ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@43.204.149.125 << 'EOF'
-          docker pull rahulpal388/deploy-httpbackend:${{secrets.sha}}
-          docker stop http_backend
-          docker run --name http_backend -d -p 8080:8080 rahulpal388/deploy-httpbackend:${{secrets.sha}}
+          sudo docker pull rahulpal388/deploy-httpbackend:${{secrets.sha}}
+          sudo docker stop http_backend
+          sudo docker run --name http_backend -d -p 8080:8080 rahulpal388/deploy-httpbackend:${{secrets.sha}}
           EOF

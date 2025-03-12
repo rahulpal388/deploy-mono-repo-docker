@@ -32,5 +32,5 @@ jobs:
           sudo docker ps -a
           sudo docker stop http-backend 
           sudo docker rm http-backend
-          sudo docker run --name http-backend -d -p 8080:8080 rahulpal388/deploy-httpbackend:${{secrets.sha}}
+          sudo docker run --name http-backend  -p 8080:8080 -d rahulpal388/deploy-httpbackend:${{secrets.sha}}
           EOF

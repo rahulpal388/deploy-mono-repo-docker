@@ -8,11 +8,9 @@ app.use(express.json())
 app.get("/",(req,res)=>{
     res.status(200).send("http get endpoint")
 })
-app.get("/hello",(req,res)=>{
-    res.status(200).send("hello")
-})
-app.get("/greet",(req,res)=>{
-    res.status(200).send("Good morning")
+
+app.get("/name",(req,res)=>{
+    res.status(200).send("Rahul Pal")
 })
 
 app.post("/signup", async (req, res) => {
